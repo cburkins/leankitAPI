@@ -1,8 +1,10 @@
 #!flask/bin/python
 
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -49,7 +51,7 @@ def return_fishtank_temp():
     import json
     cardsObj = json.loads(jsonString);
     
-    del cardsObj[5:]
+    #del cardsObj[5:]
     return (json.dumps(cardsObj));
 
 
@@ -66,7 +68,7 @@ def get_task(task_id):
 
 # make sure we don't run accidentally if we get imported by other python script
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5017, debug=False)
+    app.run(host="0.0.0.0", port=1433, debug=False)
 
 
 # ===============================================================================================
