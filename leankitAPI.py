@@ -36,8 +36,21 @@ def getFishTankTemp (ProbeSerialNum):
 
 @app.route('/leankit/list', methods=['GET'])
 def return_fishtank_temp():
-    return jsonify({'tankWaterTemp': '72'});
-
+    # would like to run this:
+    # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
+    import subprocess
+    jsonString = subprocess.check_output(['/usr/bin/node', 
+                                          'leankit/get_cards_by_lane.js', 
+                                          '--accountName', 'https://jnj.leankit.com',
+                                          '--boardId', '372745411',
+                                          '--printCards',
+                                          '--printOptions', 'UPLGTZ', 
+                                          '--jsonify']);
+    import json
+    cardsObj = json.loads(jsonString);
+    
+    del cardsObj[5:]
+    return (json.dumps(cardsObj));
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
