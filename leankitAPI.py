@@ -22,7 +22,6 @@ def return_fishtank_temp():
     import subprocess
     jsonString = subprocess.check_output(['/usr/bin/node', 
                                           'leankit/get_cards_by_lane.js', 
-                                          '--accountName', 'https://jnj.leankit.com',
                                           '--boardId', '372745411',
                                           '--printCards',
                                           '--printOptions', 'ABCDGPYZTWELIVU', 
