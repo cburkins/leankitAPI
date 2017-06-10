@@ -25,12 +25,12 @@ def return_fishtank_temp():
                                           '--accountName', 'https://jnj.leankit.com',
                                           '--boardId', '372745411',
                                           '--printCards',
-                                          '--printOptions', 'UPLGTZ', 
+                                          '--printOptions', 'ABCDGPYZTWELIVU', 
                                           '--jsonify']);
     import json
     cardsObj = json.loads(jsonString);
     
-    #del cardsObj[5:]
+#    del cardsObj[5:]
     return (json.dumps(cardsObj));
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
