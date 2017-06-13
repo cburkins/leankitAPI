@@ -24,7 +24,7 @@ def return_fishtank_temp():
                                           'leankit/get_cards_by_lane.js', 
                                           '--boardId', '372745411',
                                           '--printCards',
-                                          '--printOptions', 'ABCDGPYZTWELIVU', 
+                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
                                           '--jsonify']);
     import json
     cardsObj = json.loads(jsonString);
@@ -38,7 +38,7 @@ def return_fishtank_temp():
 
 # make sure we don't run accidentally if we get imported by other python script
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=1433, debug=False)
+    app.run(host="0.0.0.0", port=1433, debug=False, threaded=True)
 
 
 # ===============================================================================================
