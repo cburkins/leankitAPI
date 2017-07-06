@@ -1,5 +1,16 @@
 #!flask/bin/python
 
+# NOTE: If you're using supervisord to run this flask API:
+# 
+# To restart the entire service
+#    service supervisord restart
+#
+# To restart via the supervisor service
+#    supervisorctl
+#    Then, inside that shell: restart leankitAPI
+#
+#
+
 # import libraries from local flask library
 from flask import Flask, jsonify
 # Library for Cross Origin Resource Sharing
@@ -15,13 +26,36 @@ CORS(app)
 # @app.route is a Python Decorator, modifies the function directly below it
 # Decorators wrap a python function, modifying it's behavior
 @app.route('/leankit/list', methods=['GET'])
-def return_fishtank_temp():
+def leankitBoard372745411():
     # would like to run this:
     # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
     import subprocess
     jsonString = subprocess.check_output(['/usr/bin/node', 
                                           'leankit/get_cards_by_lane.js', 
                                           '--boardId', '372745411',
+                                          '--printCards',
+                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
+                                          '--jsonify']);
+    import json
+    cardsObj = json.loads(jsonString);
+    
+    # Truncate the card list to 5
+    #del cardsObj[5:]
+
+    return (json.dumps(cardsObj));
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Endpoint to list all Leankit cards on our board
+# @app.route is a Python Decorator, modifies the function directly below it
+# Decorators wrap a python function, modifying it's behavior
+@app.route('/leankit/demand', methods=['GET'])
+def leankitBoard412731036():
+    # would like to run this:
+    # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
+    import subprocess
+    jsonString = subprocess.check_output(['/usr/bin/node', 
+                                          'leankit/get_cards_by_lane.js', 
+                                          '--boardId', '412731036',
                                           '--printCards',
                                           '--printOptions', 'ABCDFGPYZTWELIVU', 
                                           '--jsonify']);
