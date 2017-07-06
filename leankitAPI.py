@@ -11,7 +11,6 @@ app = Flask(__name__)
 CORS(app)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 # Endpoint to list all Leankit cards on our board
 # @app.route is a Python Decorator, modifies the function directly below it
 # Decorators wrap a python function, modifying it's behavior
@@ -29,8 +28,12 @@ def return_fishtank_temp():
     import json
     cardsObj = json.loads(jsonString);
     
-#    del cardsObj[5:]
+    # Truncate the card list to 5
+    #del cardsObj[5:]
+
     return (json.dumps(cardsObj));
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # - - - - - - - - - - - -  Main   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
