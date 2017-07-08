@@ -7,9 +7,13 @@
 #
 # To restart via the supervisor service
 #    supervisorctl
-#    Then, inside that shell: restart leankitAPI
+#        Then, inside that shell: restart leankitAPI
+#    or simply "sudo supervisorctl restart leankitAPI" (if permitted by sudo)
 #
-#
+# /etc/supervisord/supervisord.conf should contain the following two lines at bottom:
+#    [include]
+#    files = /etc/supervisord/conf.d/*.conf
+
 
 # import libraries from local flask library
 from flask import Flask, jsonify
@@ -48,6 +52,29 @@ def leankitBoard372745411():
 # Endpoint to list all Leankit cards on our board
 # @app.route is a Python Decorator, modifies the function directly below it
 # Decorators wrap a python function, modifying it's behavior
+@app.route('/leankit/listTest', methods=['GET'])
+def leankitBoard372745411Test():
+    # would like to run this:
+    # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
+    import subprocess
+    jsonString = subprocess.check_output(['/usr/bin/node', 
+                                          'leankitTest/get_cards_by_lane.js', 
+                                          '--boardId', '372745411',
+                                          '--printCards',
+                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
+                                          '--jsonify']);
+    import json
+    cardsObj = json.loads(jsonString);
+    
+    # Truncate the card list to 5
+    #del cardsObj[5:]
+
+    return (json.dumps(cardsObj));
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Endpoint to list all Leankit cards on our board
+# @app.route is a Python Decorator, modifies the function directly below it
+# Decorators wrap a python function, modifying it's behavior
 @app.route('/leankit/demand', methods=['GET'])
 def leankitBoard412731036():
     # would like to run this:
@@ -57,7 +84,31 @@ def leankitBoard412731036():
                                           'leankit/get_cards_by_lane.js', 
                                           '--boardId', '412731036',
                                           '--printCards',
-                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
+                                          '--printOptions', 'ABCDFGPYZTWELIVUH', 
+                                          '--jsonify']);
+    import json
+    cardsObj = json.loads(jsonString);
+    
+    # Truncate the card list to 5
+    #del cardsObj[5:]
+
+    return (json.dumps(cardsObj));
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Endpoint to list all Leankit cards on our board
+# @app.route is a Python Decorator, modifies the function directly below it
+# Decorators wrap a python function, modifying it's behavior
+@app.route('/leankit/demandTest', methods=['GET'])
+def leankitBoard412731036Test():
+    # would like to run this:
+    # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
+    import subprocess
+    jsonString = subprocess.check_output(['/usr/bin/node', 
+                                          'leankitTest/get_cards_by_lane.js', 
+                                          '--boardId', '412731036',
+                                          '--printCards',
+                                          '--printOptions', 'ABCDFGPYZTWELIVUH', 
                                           '--jsonify']);
     import json
     cardsObj = json.loads(jsonString);
