@@ -34,12 +34,10 @@ def leankitBoard372745411():
     # would like to run this:
     # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
     import subprocess
-    jsonString = subprocess.check_output(['/usr/bin/node', 
-                                          'leankit/get_cards_by_lane.js', 
-                                          '--boardId', '372745411',
-                                          '--printCards',
-                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
-                                          '--jsonify']);
+    jsonString = subprocess.check_output(['/usr/bin/scl',
+                                          'enable',
+                                          'rh-nodejs6',
+                                          'node leankit/get_cards_by_lane.js --boardId 372745411 --printCards --printOptions ABCDFGPYZTWELIVU --jsonify']);
     import json
     cardsObj = json.loads(jsonString);
     
@@ -57,12 +55,10 @@ def leankitBoard372745411Test():
     # would like to run this:
     # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
     import subprocess
-    jsonString = subprocess.check_output(['/usr/bin/node', 
-                                          'leankitTest/get_cards_by_lane.js', 
-                                          '--boardId', '372745411',
-                                          '--printCards',
-                                          '--printOptions', 'ABCDFGPYZTWELIVU', 
-                                          '--jsonify']);
+    jsonString = subprocess.check_output(['/usr/bin/scl',
+                                          'enable',
+                                          'rh-nodejs6',
+                                          'node leankitTest/get_cards_by_lane.js --boardId 372745411 --printCards --printOptions ABCDFGPYZTWELIVU --jsonify']);
     import json
     cardsObj = json.loads(jsonString);
     
@@ -80,12 +76,11 @@ def leankitBoard412731036():
     # would like to run this:
     # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
     import subprocess
-    jsonString = subprocess.check_output(['/usr/bin/node', 
-                                          'leankit/get_cards_by_lane.js', 
-                                          '--boardId', '412731036',
-                                          '--printCards',
-                                          '--printOptions', 'ABCDFGPYZTWELIVUH', 
-                                          '--jsonify']);
+    # scl enable rh-nodejs6 'node ./get_cards_by_lane.js --boardId 412731036 --printLanes --pretty --verbose'
+    jsonString = subprocess.check_output(['/usr/bin/scl',
+                                          'enable',
+                                          'rh-nodejs6',
+                                          'node leankit/get_cards_by_lane.js --boardId 412731036 --printCards --printOptions ABCDFGPYZTWELIVUH --jsonify']);
     import json
     cardsObj = json.loads(jsonString);
     
@@ -104,12 +99,10 @@ def leankitBoard412731036Test():
     # would like to run this:
     # node leankit/get_cards_by_lane.js --accountName https://jnj.leankit.com --boardId 372745411 --printCards --printOptions UPLGTZ  --jsonify
     import subprocess
-    jsonString = subprocess.check_output(['/usr/bin/node', 
-                                          'leankitTest/get_cards_by_lane.js', 
-                                          '--boardId', '412731036',
-                                          '--printCards',
-                                          '--printOptions', 'ABCDFGPYZTWELIVUH', 
-                                          '--jsonify']);
+    jsonString = subprocess.check_output(['/usr/bin/scl',
+                                          'enable',
+                                          'rh-nodejs6',
+                                          'node leankit/get_cards_by_lane.js --boardId 412731036 --printCards --printOptions ABCDFGPYZTWELIVUH --jsonify']);
     import json
     cardsObj = json.loads(jsonString);
     
